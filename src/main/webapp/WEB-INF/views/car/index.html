@@ -1,0 +1,41 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Trang chủ</title>
+</head>
+<body>
+<h1>Trang chủ</h1>
+<form th:action="@{/cars/search}">
+    <input type="text" name="q">
+    <button>Tìm kiếm</button>
+</form>
+<a th:href="@{/cars/create}">Thêm xe</a>
+<h2>Danh sách xe</h2>
+<table>
+    <tr>
+        <th>STT</th>
+        <th>Tên xe</th>
+        <th>Biển số xe</th>
+        <th>Nhà sản xuất</th>
+        <th>Giá</th>
+        <th></th>
+        <th colspan="2">Hành động</th>
+    </tr>
+    <tr th:each="product : ${products}">
+        <td th:text="${product.id}"></td>
+        <td th:text="${product.name}"></td>
+        <td th:text="${product.description}"></td>
+        <td th:text="${product.price}"></td>
+        <td th:text="${product.quantity}"></td>
+        <td><img th:src="@{'/static/image/'+${product.image}}" alt="Hiện chưa có ảnh" style="width: 150px ; height: 150px"></td>
+        <td th:text="${product.category.getName()}"></td>
+        <td><button><a th:href="@{/products/update/{id}(id=${product.id})}">Sửa</a></button></td>
+        <td><button><a th:href="@{/products/delete/{id}(id=${product.id})}">Xóa</a></button></td>
+    </tr>
+</table>
+</body>
+</html>
