@@ -8,22 +8,14 @@
     <title>Xóa</title>
 </head>
 <body>
-<h1>Xóa xe</h1>
-<form action="" method="post" th:object="${car}">
+<h1>Xóa nhà sản xuất</h1>
+<form action="" method="post" th:object="${producer}">
     <h4>ID</h4>
     <p th:text="*{id}"></p>
     <h4>Tên</h4>
     <p th:text="*{name}"></p>
-    <h4>Biển số</h4>
-    <p th:text="*{code}"></p>
-    <h4>Nhà sản xuất</h4>
-    <p th:text="*{producer.name}"></p>
-    <h4>Giá</h4>
-    <p th:text="*{price}"></p>
-    <h4>Kiểu xe</h4>
-    <p th:text="*{type.name}"></p>
     <button>Xác nhận</button>
 </form>
-<button><a href="/cars">Trang chủ</a></button>
+<button><a href="/producers">Danh sách nhà sản xuất</a></button>
 </body>
 </html>

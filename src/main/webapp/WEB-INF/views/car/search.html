@@ -8,6 +8,33 @@
     <title>Tìm kếm</title>
 </head>
 <body>
-
+<h2>Danh sách sản phẩm</h2>
+<table>
+    <tr>
+        <th>STT</th>
+        <th>Tên xe</th>
+        <th>Biển số xe</th>
+        <th>Nhà sản xuất</th>
+        <th>Giá</th>
+        <th>Kiểu xe</th>
+        <th colspan="2">Hành động</th>
+    </tr>
+    <tr th:each="car , count : ${cars}">
+        <td th:text="${count.count}"></td>
+        <td th:text="${car.name}"></td>
+        <td th:text="${car.code}"></td>
+        <td th:text="${car.producer.getName()}"></td>
+        <td th:text="${car.price}"></td>
+        <td th:text="${car.type.getName()}"></td>
+        <td><button><a th:href="@{/cars/update/{id}(id=${car.id})}">Sửa</a></button></td>
+        <td><button><a th:href="@{/cars/delete/{id}(id=${car.id})}">Xóa</a></button></td>
+    </tr>
+</table>
+<div>
+    <a th:if="${cars.hasPrevious()}" th:href="@{/cars/search(s=${s},page=${cars.number - 1})}">Previous</a>
+    <span th:text="${cars.number+1}"></span>/<span th:text="${cars.totalPages}"></span>
+    <a th:if="${cars.hasNext()}" th:href="@{/cars/search(s=${s},page=${cars.number + 1})}">Next</a>
+</div>
+<button><a href="/cars">Trang chủ</a></button>
 </body>
 </html>

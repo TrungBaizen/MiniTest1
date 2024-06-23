@@ -16,10 +16,10 @@ import javax.validation.constraints.NotEmpty;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Type {
+public class Producer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotEmpty(message = "Tên không được để trống")
+    @NotEmpty(message = "Tên nhà sản xuất không được để trống")
     private String name;
 }

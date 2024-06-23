@@ -1,10 +1,13 @@
 package com.example.service.Impl;
 
+import com.example.model.DTO.TypeDTO;
 import com.example.model.Type;
 import com.example.repository.CarRepository;
 import com.example.repository.TypeRepository;
 import com.example.service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -38,5 +41,10 @@ public class TypeServiceImpl implements TypeService {
     @Override
     public Optional<Type> findById(Long id) {
         return typeRepository.findById(id);
+    }
+
+    @Override
+    public Page<TypeDTO> findQuantityInTypeByIdType(Pageable pageable) {
+        return typeRepository.findQuantityInProducerByIdProducer(pageable);
     }
 }

@@ -8,6 +8,33 @@
     <title>Thêm</title>
 </head>
 <body>
-
+<h1>Thêm xe</h1>
+<form action="" method="post" th:object="${car}">
+    <h3>Tên xe</h3>
+    <input type="text" th:field="*{name}" placeholder="Tên">
+    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+    <h3>Biển số</h3>
+    <input type="text" th:field="*{code}" placeholder="Biển số">
+    <span th:if="${#fields.hasErrors('code')}" th:errors="*{code}"></span>
+    <h3>Nhà sản xuất</h3>
+    <select th:field="*{producer.id}">
+        <option th:each="producer : ${producers}"
+                th:value="${producer.id}"
+                th:text="${producer.name}">
+        </option>
+    </select>
+    <h3>Giá</h3>
+    <input type="number" th:field="*{price}" placeholder="Giá">
+    <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span>
+    <h3>Kiểu xe</h3>
+    <select th:field="*{type.id}">
+        <option th:each="type : ${types}"
+                th:value="${type.id}"
+                th:text="${type.name}">
+        </option>
+    </select>
+    <button>Thêm</button>
+</form>
+<button><a href="/cars">Trang chủ</a></button>
 </body>
 </html>

@@ -8,6 +8,14 @@
     <title>Xóa</title>
 </head>
 <body>
-
+<h1>Xóa kiểu xe</h1>
+<form action="" method="post" th:object="${type}">
+    <h4>ID</h4>
+    <p th:text="*{id}"></p>
+    <h4>Tên</h4>
+    <p th:text="*{name}"></p>
+    <button>Xác nhận</button>
+</form>
+<button><a href="/types">Danh sách kiểu xe</a></button>
 </body>
 </html>

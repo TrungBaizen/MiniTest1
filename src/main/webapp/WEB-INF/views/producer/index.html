@@ -1,0 +1,30 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Danh sách nhà sản xuất</title>
+</head>
+<body>
+<h2>Danh sách nhà sản xuất</h2>
+<a th:href="@{/cars}">Danh sách xe</a>
+<a th:href="@{/types}">Danh sách kiểu xe</a>
+<a th:href="@{/producers/statistic}">Thống kê số xe bán được</a>
+<a th:href="@{/producers/create}">Thêm nhà sản xuất</a>
+<table>
+    <tr>
+        <th>STT</th>
+        <th>Tên nhà sản xuất</th>
+        <th colspan="2">Hành động</th>
+    </tr>
+    <tr th:each="producer , count : ${producers}">
+        <td th:text="${count.count}"></td>
+        <td th:text="${producer.name}"></td>
+        <td><button><a th:href="@{/producers/update/{id}(id=${producer.id})}">Sửa</a></button></td>
+        <td><button><a th:href="@{/producers/delete/{id}(id=${producer.id})}">Xóa</a></button></td>
+    </tr>
+</table>
+</body>
+</html>

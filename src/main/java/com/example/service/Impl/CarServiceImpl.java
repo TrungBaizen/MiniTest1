@@ -4,6 +4,8 @@ import com.example.model.Car;
 import com.example.repository.CarRepository;
 import com.example.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -21,6 +23,9 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public void save(Car car) {
+        if (carRepository.existsByCode(car.getCode())) {
+            throw new IllegalArgumentException("Mã số biển đã tồn tại");
+        }
         carRepository.save(car);
     }
 
@@ -35,7 +40,17 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
+    public Page<Car> findAllPageAndSort(Pageable pageable) {
+        return carRepository.findAll(pageable);
+    }
+
+    @Override
     public Optional<Car> findById(Long id) {
         return carRepository.findById(id);
+    }
+
+    @Override
+    public Page<Car> findByNameContainingPageAndSort(String name , Pageable pageable) {
+        return carRepository.findByNameContaining(name , pageable);
     }
 }

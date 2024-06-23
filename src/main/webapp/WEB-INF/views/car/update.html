@@ -5,9 +5,38 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sửa</title>
+    <title>Thay đổi thông tin xe</title>
 </head>
 <body>
-
+<h1>Thay đổi thông tin xe</h1>
+<form action="" method="post" th:object="${car}">
+    <h3>Id</h3>
+    <input type="text" th:field="*{id}" readonly>
+    <h3>Tên xe</h3>
+    <input type="text" th:field="*{name}">
+    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+    <h3>Biển số</h3>
+    <input type="text" th:field="*{code}">
+    <span th:if="${#fields.hasErrors('code')}" th:errors="*{code}"></span>
+    <h3>Nhà sản xuất</h3>
+    <select th:field="*{producer.id}">
+        <option th:each="producer : ${producers}"
+                th:value="${producer.id}"
+                th:text="${producer.name}">
+        </option>
+    </select>
+    <h3>Giá</h3>
+    <input type="text" th:field="*{price}">
+    <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span>
+    <h3>Kiểu xe</h3>
+    <select th:field="*{type.id}">
+        <option th:each="type : ${types}"
+                th:value="${type.id}"
+                th:text="${type.name}">
+        </option>
+    </select>
+    <button>Sửa</button>
+</form>
+<button><a href="/cars">Trang chủ</a></button>
 </body>
 </html>

@@ -9,12 +9,12 @@
 </head>
 <body>
 <h1>Thêm nhà sản xuất</h1>
-<form action="" method="post" th:object="${type}">
-    <h3>Tên kiểu xe</h3>
+<form action="" method="post" th:object="${producer}">
+    <h3>Tên nhà sản xuất</h3>
     <input type="text" th:field="*{name}" placeholder="Tên">
     <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
     <button>Thêm</button>
 </form>
-<button><a href="/types">Trang chủ</a></button>
+<button><a href="/producers">Trang chủ</a></button>
 </body>
 </html>
