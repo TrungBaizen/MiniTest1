@@ -6,15 +6,22 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sửa</title>
+    <style>
+        a {
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
 <h1>Sửa nhà sản xuất</h1>
 <form action="" method="post" th:object="${producer}">
     <h3>ID</h3>
     <input type="number" th:field="*{id}" readonly>
+    <br>
     <h3>Tên nhà sản xuất</h3>
     <input type="text" th:field="*{name}">
     <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+    <br>
     <button>Sửa</button>
 </form>
 <button><a href="/producers">Trang chủ</a></button>

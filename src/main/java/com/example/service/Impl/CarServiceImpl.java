@@ -23,10 +23,18 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public void save(Car car) {
-        if (carRepository.existsByCode(car.getCode())) {
-            throw new IllegalArgumentException("Mã số biển đã tồn tại");
+        if (car.getId() == null){
+            if (carRepository.existsByCode(car.getCode())) {
+                throw new IllegalArgumentException("Mã số biển đã tồn tại");
+            }
+            carRepository.save(car);
+        }else {
+            String code = carRepository.findById(car.getId()).get().getCode();
+            if (!code.equals(car.getCode()) && carRepository.existsByCode(car.getCode()) ){
+                throw new IllegalArgumentException("Mã số biển đã tồn tại");
+            }
+                carRepository.save(car);
         }
-        carRepository.save(car);
     }
 
     @Override

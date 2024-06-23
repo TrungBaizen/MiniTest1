@@ -96,9 +96,16 @@ public class CarController {
             modelAndView.addObject("producers",producerService.findAll());
             return modelAndView;
         }
-        ModelAndView modelAndView = new ModelAndView("redirect:/cars");
-        carService.save(car);
-        return modelAndView;
+        try {
+            carService.save(car);
+        }catch (IllegalArgumentException e){
+            bindingResult.rejectValue("code","Không thể sửa xe",e.getMessage());
+            ModelAndView modelAndView = new ModelAndView("car/update");
+            modelAndView.addObject("types",typeService.findAll());
+            modelAndView.addObject("producers",producerService.findAll());
+            return modelAndView;
+        }
+        return new ModelAndView("redirect:/cars");
     }
 
     @GetMapping("/search")

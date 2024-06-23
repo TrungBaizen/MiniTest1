@@ -24,7 +24,7 @@ public class Car {
     private String code;
     @NotEmpty(message = "Tên không được để trống")
     private String name;
-    @Min(value = 200000000 , message = "Giá thấp nhất phải trên 200000000")
+    @Min(value = 10000 , message = "Giá thấp nhất phải trên 10000$")
     private double price;
 
     @ManyToOne

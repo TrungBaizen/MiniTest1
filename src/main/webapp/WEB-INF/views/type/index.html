@@ -3,14 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Danh sách kiểu xe</title>
+    <style>
+        a {
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
 <h2>Danh sách kiểu xe</h2>
 <a th:href="@{/cars}">Danh sách xe</a>
+<br>
 <a th:href="@{/producers}">Danh sách nhà sản xuất</a>
+<br>
 <a th:href="@{/types/statistic}">Thống kê số xe bán được</a>
-<a th:href="@{/types/create}">Thêm kiểu xe</a>
-<table>
+<table border="1">
     <tr>
         <th>STT</th>
         <th>Tên kiểu xe</th>
@@ -21,6 +27,12 @@
         <td th:text="${type.name}"></td>
         <td><button><a th:href="@{/types/update/{id}(id=${type.id})}">Sửa</a></button></td>
         <td><button><a th:href="@{/types/delete/{id}(id=${type.id})}">Xóa</a></button></td>
+    </tr>
+    <tr>
+        <td colspan="2"></td>
+        <td colspan="2" style="text-align: center">
+            <button><a th:href="@{/types/create}">Thêm kiểu xe</a></button>
+        </td>
     </tr>
 </table>
 </body>
